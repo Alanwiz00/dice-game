@@ -182,14 +182,16 @@ const DiceGame: NextPage = () => {
               <Amount amount={Number(riggedRollBalance?.formatted || 0)} showUsdPrice className="text-lg" />
             </div>
           </div>
-          {/* <button
+          <button
             onClick={async () => {
               if (!rolled) {
                 setRolled(true);
               }
               setIsRolling(true);
               try {
-                await writeRiggedRollAsync({ functionName: "riggedRoll" });
+                await writeRiggedRollAsync({
+                  functionName: "riggedRoll",
+                  value: parseEther(ROLL_ETH_VALUE),});
               } catch (err) {
                 console.error("Error calling riggedRoll function", err);
               }
@@ -198,8 +200,8 @@ const DiceGame: NextPage = () => {
             className="mt-2 btn btn-secondary btn-xl normal-case font-xl text-lg"
           >
             Rigged Roll!
-          </button> */}
-          <div className="flex mt-8">
+          </button>
+                    <div className="flex mt-8">
             {rolled ? (
               isRolling ? (
                 <video key="rolling" width={300} height={300} loop src="/rolls/Spin.webm" autoPlay />
